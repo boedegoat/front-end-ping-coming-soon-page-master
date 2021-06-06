@@ -11,7 +11,17 @@
   --red: hsl(354, 100%, 66%);
   --text-dark: hsl(209, 33%, 12%);
   --text-light: hsl(0, 0%, 59%);
-  --text-size: 20px;
+}
+
+/* 
+  reset chrome input autofill color to white 
+  source : https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
 }
 
 body {
@@ -24,6 +34,7 @@ body {
 
 .container {
   max-width: 645px;
+  margin: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +56,52 @@ body {
 
 .sub-header {
   color: var(--text-dark);
-  margin: 0.9rem 0;
+  margin: 0.9rem 0 1.8rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.form-control {
+  position: relative;
+  width: 420px;
+  font-size: 14px;
+}
+
+.form-control input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--secondary-blue);
+  padding: 12px 30px;
+  outline: none;
+  border-radius: 28px;
+  font-size: 20px;
+}
+
+.form-control input:focus + label,
+.form-control input:not(:focus, :placeholder-shown) + label {
+  top: -9px;
+  background: #fff;
+}
+
+.form-control label {
+  position: absolute;
+  top: 18px;
+  left: 27px;
+  user-select: none;
+  cursor: text;
+  padding: 0 5px;
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.submit-btn {
+  padding: 5px 15px;
 }
 
 .illustration-img {
