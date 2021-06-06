@@ -239,6 +239,26 @@ body {
   background: var(--primary-blue);
 }
 
+.credit {
+  margin-top: 4rem;
+  background: var(--primary-blue);
+  width: 100%;
+  padding: 0.5em;
+  color: #fff;
+  text-align: center;
+  font-size: clamp(10px, 2vw, 15px);
+}
+
+.credit a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
+
+.credit a:hover {
+  color: var(--secondary-blue);
+}
+
 @media (max-width: 768px) {
   .container {
     max-width: 400px;
