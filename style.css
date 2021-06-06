@@ -61,12 +61,34 @@ body {
   text-align: center;
 }
 
+@keyframes nope {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2%);
+  }
+  50% {
+    transform: translateX(2%);
+  }
+  75% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .form {
   display: flex;
   justify-content: center;
   gap: 1rem;
   width: 100%;
   margin-bottom: 4rem;
+}
+
+.form.nope {
+  animation: nope 0.3s forwards;
 }
 
 .form-control {
@@ -106,6 +128,34 @@ body {
   transition: 0.3s;
 }
 
+.empty-msg,
+.invalid-msg,
+.success-msg {
+  color: var(--red);
+  position: absolute;
+  bottom: -40%;
+  left: 30px;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  display: none;
+}
+
+.success-msg {
+  color: green;
+}
+
+.form-control.empty .empty-msg,
+.form-control.invalid .invalid-msg,
+.form-control.success .success-msg {
+  display: block;
+}
+
+.form-control.empty input,
+.form-control.invalid input {
+  border-color: var(--red);
+}
+
 .submit-btn {
   border: none;
   outline: none;
@@ -116,9 +166,40 @@ body {
   padding: 5px 50px;
   border-radius: 28px;
   box-shadow: 0 4px 10px var(--secondary-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
-.submit-btn:hover {
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.submit-btn::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border: 3px solid #fff;
+  border-top: 3px solid hsl(223, 87%, 70%);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+.submit-btn.loading {
+  pointer-events: none;
+  cursor: default;
+}
+
+.submit-btn.loading::before {
+  display: block;
+}
+
+.submit-btn:hover,
+.submit-btn.loading {
   background: hsl(223, 87%, 70%);
 }
 
