@@ -16,4 +16,38 @@
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 645px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  margin-bottom: 2rem;
+}
+
+.header {
+  font-weight: 300;
+  color: var(--text-light);
+}
+
+.header b {
+  color: var(--text-dark);
+}
+
+.sub-header {
+  color: var(--text-dark);
+  margin: 0.9rem 0;
+}
+
+.illustration-img {
+  width: 100%;
 }
