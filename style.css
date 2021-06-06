@@ -120,3 +120,34 @@ body {
 .illustration-img {
   width: 100%;
 }
+
+.footer {
+  margin-top: 4rem;
+  color: var(--text-light);
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.icon-wrapper {
+  text-decoration: none;
+  color: var(--primary-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 1px solid var(--secondary-blue);
+}
+
+.icon-wrapper:hover {
+  color: #fff;
+  background: var(--primary-blue);
+}
