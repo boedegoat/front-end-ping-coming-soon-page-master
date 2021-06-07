@@ -1,6 +1,6 @@
 # Frontend Mentor - Ping coming soon page solution
 
-This is a solution to the [Ping coming soon page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ping-single-column-coming-soon-page-5cadd051fec04111f7b848da). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Ping coming soon page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ping-single-column-coming-soon-page-5cadd051fec04111f7b848da). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -11,12 +11,9 @@ This is a solution to the [Ping coming soon page challenge on Frontend Mentor](h
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -28,25 +25,18 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 - Submit their email address using an `input` field
 - Receive an error message when the `form` is submitted if:
-	- The `input` field is empty. The message for this error should say *"Whoops! It looks like you forgot to add your email"*
-	- The email address is not formatted correctly (i.e. a correct email address should have this structure: `name@host.tld`). The message for this error should say *"Please provide a valid email address"*
+  - The `input` field is empty. The message for this error should say _"Whoops! It looks like you forgot to add your email"_
+  - The email address is not formatted correctly (i.e. a correct email address should have this structure: `name@host.tld`). The message for this error should say _"Please provide a valid email address"_
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshot-desktop.jpg)
+![](./screenshot-mobile.jpg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [solution URL](https://www.frontendmentor.io/solutions/css-flexbox-css-animation-vanilla-javascript-XVHruqxTY)
+- [live site URL](https://boedegoat-ping-coming-soon-page.vercel.app/)
 
 ## My process
 
@@ -54,62 +44,110 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 - Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- CSS Flexbox
+- Vanilla JavaScript
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+1. Create google material design input style
 
-To see how you can add code snippets, see below:
+   so bassically, we use the label element as the input placeholder
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+   ```html
+   <div class="form-control">
+     <input type="text" id="name" placeholder=" " />
+     <label for="name">Name</label>
+   </div>
+   ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+   As you can notice, I put empty placeholder for css styling purpose
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+   So, Lets get in to css styling
 
-### Continued development
+   First, Set the input wrapper position to relative
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+   ```css
+   .form-control {
+     position: relative;
+     /* for instance : */
+     width: 200px;
+   }
+   ```
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+   Style the input
+
+   ```css
+   .form-control input {
+     padding: 15px 20px;
+     outline: none;
+     border-radius: 5px;
+     border: 1px solid #fff;
+
+     /* make the input full size to its wrapper */
+     width: 100%;
+     height: 100%;
+   }
+   ```
+
+   Then, set the label position to absolute
+
+   ```css
+   .form-control label {
+     position: absolute;
+
+     /* for centering y axis */
+     top: 50%;
+     transform: translateY(-50%);
+
+     /* align label perfectly to the start of the input text  */
+     padding: 0 5px;
+     left: 10px;
+
+     transition: 0.3s;
+   }
+   ```
+
+   Use `:focus` pseudo class so when the input is on focus, move the label to the top
+
+   ```css
+   .form-control input:focus + label {
+     top: 0;
+
+     /* match the background */
+     background: #fff;
+   }
+   ```
+
+   Lastly, add `:not` to handle if input is not focus and the placeholder not shown (which means the input has been filled) to make the label keep stay at the top
+
+   ```css
+   .form-control input:focus + label,
+   .form-control input:not(:focus, :placeholder-shown) + label {
+     top: 0;
+
+     /* match the background */
+     background: #fff;
+   }
+   ```
+
+   And yeah, now your input looks pretty good !
+
+2. Style input error message and validation
+3. Make loading spinner animation
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Florin Pop - JavaScript Client-side Form Validation](https://www.youtube.com/watch?v=rsd4FNGTRBw&t=1472s) - This video helped me to make input error message style and validation
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Bedimcode - Input Animation With HTML & CSS | Style Google](https://youtu.be/UCMNYTid070) - This one helped me to make google input style
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Frontend Mentor - [@boedegoat](https://www.frontendmentor.io/profile/boedegoat)
+- Email - bhremada.fka@gmail.com
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- **Code grepper (adriendums) -** for email regex function
+- **W3School -** for submit button loading guide
+- **Stackoverflow -** for ignoring chrome autofill color css snippets
